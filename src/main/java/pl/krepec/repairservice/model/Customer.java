@@ -1,6 +1,6 @@
-package pl.krepec.repairservice.dto;
+package pl.krepec.repairservice.model;
 
-
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -8,6 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @RequiredArgsConstructor
+@AllArgsConstructor
 public class Customer {
 
     private Long customerId;
@@ -16,6 +17,5 @@ public class Customer {
     private String phoneNumber;
 
 
-    public Customer(Long customerId, String name, String surname, String phoneNumber) {
-    }
+
 }

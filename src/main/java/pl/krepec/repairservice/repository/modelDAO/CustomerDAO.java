@@ -1,4 +1,4 @@
-package pl.krepec.repairservice.repository.dao;
+package pl.krepec.repairservice.repository.modelDAO;
 
 import lombok.*;
 
@@ -14,7 +14,7 @@ import javax.validation.constraints.NotNull;
 public class CustomerDAO {
 
         @Id
-        @GeneratedValue
+        @GeneratedValue(strategy = GenerationType.AUTO)
         @Column (name = "customerId")
         @NotNull
         private Long customerId;
@@ -26,10 +26,10 @@ public class CustomerDAO {
         @Column (name = "surname")
         private String surname;
 
-        @Column(name = "phone_number")
+        @Column(name = "phoneNumber")
+        @NotNull
         private String phoneNumber;
 
 
-        public CustomerDAO(String name, String surname, String phoneNumber) {
-        }
+
 }
