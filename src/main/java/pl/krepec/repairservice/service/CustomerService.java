@@ -16,9 +16,9 @@ public class CustomerService {
     private CustomerRepository customerRepository;
 
 
-//   // private CustomerService(CustomerRepository customerRepository) {
-//        this.customerRepository = customerRepository;
-//    }
+   private CustomerService(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
+    }
 
     private Customer mapCustomer(CustomerDAO customerDAO){
         return new Customer(customerDAO.getCustomerId(),customerDAO.getName(), customerDAO.getSurname(), customerDAO.getPhoneNumber());
