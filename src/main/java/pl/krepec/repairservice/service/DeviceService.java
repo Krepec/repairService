@@ -35,4 +35,16 @@ public class DeviceService {
     public List<DeviceDAO> findAll() {
         return deviceRepository.findAll();
     }
+
+    public Device findByModel(String model) {
+        DeviceDAO deviceDAO = deviceRepository.findByModel(model);
+        return mapDevice(deviceDAO);
+    }
+
+    public String addDevice(DeviceDAO deviceDAO) {
+        deviceRepository.save(deviceDAO);
+        return "Device " + deviceDAO.model + "added";
+    }
+
+
 }
