@@ -6,4 +6,5 @@ import pl.krepec.repairservice.repository.modelDAO.CustomerDAO;
 
 @Repository
 public interface CustomerRepository extends JpaRepository<CustomerDAO, Long> {
+    CustomerDAO findByPhoneNumber(String phoneNumber);
 }

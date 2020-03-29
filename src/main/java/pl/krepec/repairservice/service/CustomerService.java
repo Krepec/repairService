@@ -16,20 +16,36 @@ public class CustomerService {
     private CustomerRepository customerRepository;
 
 
-   private CustomerService(CustomerRepository customerRepository) {
+    private CustomerService(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
     }
 
-    private Customer mapCustomer(CustomerDAO customerDAO){
-        return new Customer(customerDAO.getCustomerId(),customerDAO.getName(), customerDAO.getSurname(), customerDAO.getPhoneNumber());
+    private Customer mapCustomer(CustomerDAO customerDAO) {
+        return new Customer(customerDAO.getCustomerId(), customerDAO.getName(), customerDAO.getSurname(), customerDAO.getPhoneNumber());
 
     }
-    public List<CustomerDAO> getAllCustomers(){
+
+    public List<CustomerDAO> getAllCustomers() {
         return customerRepository.findAll();
     }
 
-    public String addCustomer(Customer customer){
+
+    public Customer findById(Long customerId) {
+        Customer customer = mapCustomer(customerRepository.findOne(customerId));
+        return customer;
+
+    }
+
+    public Customer findByPhoneNumber(String phoneNumber) {
+        Customer customer = mapCustomer(customerRepository.findByPhoneNumber(phoneNumber));
+        return customer;
+
+    }
+
+
+    public String addCustomer(Customer customer) {
         CustomerDAO customerDAO = customerRepository.save(new CustomerDAO(customer.getCustomerId(), customer.getName(), customer.getSurname(), customer.getPhoneNumber()));
         return "User " + customerDAO.getName() + " added";
     }
+
 }

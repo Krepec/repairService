@@ -11,7 +11,7 @@ import pl.krepec.repairservice.service.DeviceService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/repairService")
+@RequestMapping("/device")
 public class DeviceController {
 
     private DeviceService deviceService;
@@ -31,5 +31,7 @@ public class DeviceController {
         return deviceService.findOne(deviceId);
 
     }
+
+
 
 }
