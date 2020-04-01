@@ -9,11 +9,10 @@ import pl.krepec.repairservice.service.CustomerService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/repairService")
+@RequestMapping("/customer")
 public class CustomerController {
 
     private CustomerService customerService;
-
 
     @Autowired
     public CustomerController(CustomerService customerService) {
@@ -21,7 +20,7 @@ public class CustomerController {
     }
 
     @GetMapping("/test")
-    public String test(){
+    public String test() {
         return "test";
     }
 
@@ -30,8 +29,18 @@ public class CustomerController {
         return customerService.getAllCustomers();
     }
 
+    @GetMapping("/{id}")
+    public Customer getById(@PathVariable("id") Long customerId) {
+       return customerService.findById(customerId);
+    }
+
+    @GetMapping("/{phone}")
+    public Customer getByPhoneNumber(@PathVariable("phone") String phoneNumber) {
+        return customerService.findByPhoneNumber(phoneNumber);
+    }
+
     @PostMapping("/customer")
-    public String addCustomer(@RequestBody Customer customer){
+    public String addCustomer(@RequestBody Customer customer) {
         return customerService.addCustomer(customer);
     }
 }

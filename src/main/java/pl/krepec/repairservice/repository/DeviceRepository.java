@@ -6,4 +6,5 @@ import pl.krepec.repairservice.repository.modelDAO.DeviceDAO;
 
 @Repository
 public interface DeviceRepository extends JpaRepository<DeviceDAO,Long> {
+    DeviceDAO findByModel(String model);
 }
