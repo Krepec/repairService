@@ -20,8 +20,8 @@ public class DeviceController {
     }
 
     @GetMapping("/device")
-    public List getAllDevices(){
-        return deviceService.findAll();
+    public List findAllDevices(){
+        return deviceService.findAllDevice();
     }
 
     @GetMapping("/{id}")

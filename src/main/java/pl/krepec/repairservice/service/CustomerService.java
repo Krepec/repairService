@@ -25,7 +25,7 @@ public class CustomerService {
 
     }
 
-    public List<CustomerDAO> getAllCustomers() {
+    public List<CustomerDAO> findAllCustomers() {
         return customerRepository.findAll();
     }
 

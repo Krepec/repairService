@@ -20,8 +20,7 @@ public class DeviceService {
     }
 
     private Device mapDevice(DeviceDAO deviceDAO) {
-        return new Device(deviceDAO.deviceId, deviceDAO.model, deviceDAO.serialNumber, deviceDAO.issue, deviceDAO.description);
-
+        return new Device(deviceDAO.deviceId, deviceDAO.model, deviceDAO.serialNumber);
 
     }
 
@@ -32,7 +31,7 @@ public class DeviceService {
 
     }
 
-    public List<DeviceDAO> findAll() {
+    public List<DeviceDAO> findAllDevice() {
         return deviceRepository.findAll();
     }
 

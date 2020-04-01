@@ -1,10 +1,12 @@
 package pl.krepec.repairservice.model;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class Customer {
 
     private static Long COUNTER_CUSTOMER_OBJECTS;
@@ -24,6 +26,4 @@ public class Customer {
         this.phoneNumber = phoneNumber;
     }
 
-    public Customer() {
-    }
 }

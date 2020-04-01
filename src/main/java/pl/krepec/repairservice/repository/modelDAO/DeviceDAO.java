@@ -1,11 +1,9 @@
 package pl.krepec.repairservice.repository.modelDAO;
 
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.context.annotation.Primary;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -13,10 +11,11 @@ import javax.validation.constraints.NotNull;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name = "device")
 public class DeviceDAO {
+
+    private Long COUNTER_DEVICE_DAO_OBJECTS;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,21 +23,24 @@ public class DeviceDAO {
     @Column(name = "device_id")
     public Long deviceId;
 
-    @Column(name = "model")
     @NotNull
+    @Column(name = "model")
     public String model;
 
-    @Column(name = "serial_number")
     @NotNull
+    @Column(name = "serial_number")
     public String serialNumber;
 
-    @Column(name = "issue")
-    @NotNull
-    public String issue;
+    public DeviceDAO(Long deviceId, String model, String serialNumber) {
 
-    @Column(name = "description")
-    @NotNull
-    public String description;
+        COUNTER_DEVICE_DAO_OBJECTS++;
+
+        this.deviceId = deviceId;
+        this.model = model;
+        this.serialNumber = serialNumber;
+
+    }
+
 
 }
 
