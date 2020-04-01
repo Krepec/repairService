@@ -3,6 +3,7 @@ package pl.krepec.repairservice.repository.modelDAO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import pl.krepec.repairservice.Status;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -13,6 +14,7 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name = "repair")
 public class RepairDAO {
+
 
     private static Long COUNTER_REPAIR_DAO_OBJECTS;
 
@@ -32,7 +34,7 @@ public class RepairDAO {
 
     @NotNull
     @Column(name = "status")
-    public String status;
+    public Status status;
 
     @NotNull
     @Column(name = "issue")
@@ -42,14 +44,14 @@ public class RepairDAO {
     @Column(name = "description")
     public String description;
 
-    public RepairDAO(Long repairId, Long customerId, Long deviceId, String status, String issue, String description) {
+    public RepairDAO(Long repairId, Long customerId, Long deviceId, Status status, String issue, String description) {
 
         COUNTER_REPAIR_DAO_OBJECTS++;
 
         this.repairId = repairId;
         this.customerId = customerId;
         this.deviceId = deviceId;
-        this.status = status;
+        this.status = status.INPROGRES;
         this.issue = issue;
         this.description = description;
     }

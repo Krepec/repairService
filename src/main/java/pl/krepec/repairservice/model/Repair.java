@@ -3,8 +3,7 @@ package pl.krepec.repairservice.model;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.time.temporal.ChronoUnit;
+import pl.krepec.repairservice.Status;
 
 @Setter
 @Getter
@@ -16,11 +15,11 @@ public class Repair {
     public Long repairId;
     public Long customerId;
     public Long deviceId;
-    public String status;
+    public Status status;
     public String issue;
     public String description;
 
-    public Repair(Long repairId, Long customerId, Long deviceId, String status, String issue, String description) {
+    public Repair(Long repairId, Long customerId, Long deviceId, Status status, String issue, String description) {
 
         COUNTER_REPAIR_OBJECTS++;
 

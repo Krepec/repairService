@@ -20,7 +20,7 @@ public class RepairService {
 
     private Repair mapRepair(RepairDAO repairDAO) {
         return new Repair(repairDAO.getRepairId(), repairDAO.getCustomerId(), repairDAO.getDeviceId(),
-                repairDAO.getStatus(), repairDAO.getIssue(), repairDAO.description);
+                repairDAO.getStatus(), repairDAO.getIssue(), repairDAO.getDescription());
     }
 
 //    private List<Repair> mapRepairList(List<RepairDAO> repairDAOList) {
