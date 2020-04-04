@@ -1,16 +1,15 @@
 package pl.krepec.repairservice.model;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@ToString
+@EqualsAndHashCode
 public class Device {
 
-    private static Long COUNTER_DEVICE_OBJECTS;
-
+    public Long COUNTER_DEVICE_OBJECTS = 0L;
 
     public Long deviceId;
     public String model;

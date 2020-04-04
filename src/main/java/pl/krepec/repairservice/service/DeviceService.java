@@ -15,7 +15,7 @@ public class DeviceService {
     private DeviceRepository deviceRepository;
 
     @Autowired
-    public DeviceService(DeviceRepository deviceRepository) {
+    private DeviceService(DeviceRepository deviceRepository) {
         this.deviceRepository = deviceRepository;
     }
 
@@ -40,8 +40,9 @@ public class DeviceService {
         return mapDevice(deviceDAO);
     }
 
-    public String addDevice(DeviceDAO deviceDAO) {
-        deviceRepository.save(deviceDAO);
+    public String addDevice(Device device) {
+        DeviceDAO deviceDAO =  deviceRepository.save(new  DeviceDAO(device.getDeviceId(),
+                device.getModel(),device.getSerialNumber()));
         return "Device " + deviceDAO.model + "added";
     }
 

@@ -4,9 +4,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pl.krepec.repairservice.Status;
+import pl.krepec.repairservice.model.Customer;
+import pl.krepec.repairservice.model.Device;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Setter
 @Getter
@@ -15,8 +18,6 @@ import javax.validation.constraints.NotNull;
 @Table(name = "repair")
 public class RepairDAO {
 
-
-    private static Long COUNTER_REPAIR_DAO_OBJECTS;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -44,11 +45,17 @@ public class RepairDAO {
     @Column(name = "description")
     public String description;
 
+    @ManyToOne
+    @JoinColumn(name = "device_id", insertable = false, updatable = false)
+    private DeviceDAO device;
+
+    @ManyToOne
+    @JoinColumn(name = "customer_id", insertable = false, updatable = false)
+    private CustomerDAO customer;
+
     public RepairDAO(Long repairId, Long customerId, Long deviceId, Status status, String issue, String description) {
 
-        COUNTER_REPAIR_DAO_OBJECTS++;
-
-        this.repairId = repairId;
+        this.repairId = 0L;
         this.customerId = customerId;
         this.deviceId = deviceId;
         this.status = status.INPROGRES;

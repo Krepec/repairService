@@ -28,13 +28,14 @@ public class DeviceController {
     public Device getById(@PathVariable("id") Long deviceId){
         return deviceService.findOne(deviceId);
     }
+
     @GetMapping("/model")
-    public Device findByModel(@PathVariable("id") String model){
+    public Device findByModel(@PathVariable("model") String model){
         return deviceService.findByModel(model);
     }
 
-    @PostMapping(value = "/device", consumes = "application/json" )
-    public String addDevice(@RequestBody DeviceDAO deviceDAO){
-       return deviceService.addDevice(deviceDAO);
+    @PostMapping(value = "/device", consumes = "application/json")
+    public String addDevice(@RequestBody Device device){
+       return deviceService.addDevice(device);
     }
 }

@@ -1,15 +1,15 @@
 package pl.krepec.repairservice.model;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@ToString
+@EqualsAndHashCode
 public class Customer {
 
-    private static Long COUNTER_CUSTOMER_OBJECTS;
+    public static Long COUNTER_CUSTOMER_OBJECTS = 0L;
 
     private Long customerId;
     private String name;
@@ -18,7 +18,7 @@ public class Customer {
 
     public Customer(Long customerId, String name, String surname, String phoneNumber) {
 
-        COUNTER_CUSTOMER_OBJECTS++;
+        COUNTER_CUSTOMER_OBJECTS ++;
 
         this.customerId = customerId;
         this.name = name;

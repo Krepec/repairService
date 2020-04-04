@@ -29,17 +29,17 @@ public class CustomerController {
         return customerService.findAllCustomers();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     public Customer getById(@PathVariable("id") Long customerId) {
        return customerService.findById(customerId);
     }
 
-    @GetMapping("/{phone}")
+    @GetMapping("/phone/{phone}")
     public Customer getByPhoneNumber(@PathVariable("phone") String phoneNumber) {
         return customerService.findByPhoneNumber(phoneNumber);
     }
 
-    @PostMapping("/customer")
+    @PostMapping(value = "/customer" ,  consumes = "application/json" )
     public String addCustomer(@RequestBody Customer customer) {
         return customerService.addCustomer(customer);
     }

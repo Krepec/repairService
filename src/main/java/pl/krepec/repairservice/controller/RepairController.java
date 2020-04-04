@@ -1,16 +1,15 @@
 package pl.krepec.repairservice.controller;
 
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pl.krepec.repairservice.model.Repair;
 import pl.krepec.repairservice.repository.modelDAO.RepairDAO;
 import pl.krepec.repairservice.service.RepairService;
 
 import java.util.List;
 
+@NoArgsConstructor
 @RestController
 @RequestMapping("/repair")
 public class RepairController {
@@ -27,14 +26,13 @@ public class RepairController {
         return repairService.finAllRepairs();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     public Repair findRepairById(@PathVariable ("id") Long repairId){
         return repairService.findByRepairId(repairId);
     }
 
-    @GetMapping("/{serialnumber}")
-    public List<Repair> findRepairBySerialNumber(@PathVariable ("serialnumber") String serialNumber){
-        return repairService.findRepairBySerialNumber(serialNumber);
+    @PostMapping(value = "/repair", consumes = "application/json")
+    public String addRepair(@RequestBody Repair repair){
+        return repairService.addRepair(repair);
     }
-
 }

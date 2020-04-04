@@ -31,8 +31,8 @@ public class CustomerService {
 
 
     public Customer findById(Long customerId) {
-        Customer customer = mapCustomer(customerRepository.findOne(customerId));
-        return customer;
+        CustomerDAO customerDAO = customerRepository.findOne(customerId);
+        return mapCustomer(customerDAO);
 
     }
 

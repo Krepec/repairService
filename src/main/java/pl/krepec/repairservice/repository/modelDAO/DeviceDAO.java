@@ -7,6 +7,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
+
 
 @Getter
 @Setter
@@ -15,7 +17,6 @@ import javax.validation.constraints.NotNull;
 @Table(name = "device")
 public class DeviceDAO {
 
-    private Long COUNTER_DEVICE_DAO_OBJECTS;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,11 +32,12 @@ public class DeviceDAO {
     @Column(name = "serial_number")
     public String serialNumber;
 
+    @OneToMany(mappedBy = "customer")
+    private List<RepairDAO> repair;
+
     public DeviceDAO(Long deviceId, String model, String serialNumber) {
 
-        COUNTER_DEVICE_DAO_OBJECTS++;
-
-        this.deviceId = deviceId;
+        this.deviceId = 0L;
         this.model = model;
         this.serialNumber = serialNumber;
 
