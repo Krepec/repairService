@@ -1,14 +1,13 @@
 package pl.krepec.repairservice.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.krepec.repairservice.model.Device;
-import pl.krepec.repairservice.repository.modelDAO.DeviceDAO;
 import pl.krepec.repairservice.service.DeviceService;
 
-import java.util.List;
-
-@RestController
+@Controller
 @RequestMapping("/device")
 public class DeviceController {
 
@@ -20,8 +19,9 @@ public class DeviceController {
     }
 
     @GetMapping("/device")
-    public List findAllDevices(){
-        return deviceService.findAllDevice();
+    public String findAllDevices(Model model){
+        System.out.println(model.addAttribute("device", deviceService.findAllDevice()));
+        return "device";
     }
 
     @GetMapping("/{id}")

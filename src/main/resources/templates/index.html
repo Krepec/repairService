@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<form>
+    <table>
+        <p>Dane klienta</p>
+        <tr>
+            <td>Imie:</td>
+            <td><input type="text"></td>
+        </tr>
+        <tr>
+            <td>Nazwisko:</td>
+            <td><input type="text"></td>
+        </tr>
+        <tr>
+            <td>Telefon kontaktowy:</td>
+            <td><input type="text"></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Dodaj klienta"></td>
+        </tr>
+    </table>
+</form>
+
+
+<form th:action="@{/device/device}">
+    <table>
+        <p>Urządzenie</p>
+        <tr>
+            <td>Model:</td>
+            <td><input type="text"></td>
+        </tr>
+        <tr>
+            <td>Numer Seryjny:</td>
+            <td><input type="text"></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Dodaj urządzenie"></td>
+        </tr>
+    </table>
+</form>
+<form>
+    <table>
+        <p>Zgłoszenie</p>
+        <tr>
+            <td>Opis usterki:</td>
+            <td><input type="text"></td>
+        </tr>
+        <tr>
+            <td>Dodatkowe informacje:</td>
+            <td><input type="text"></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Przyjmij zgłoszenie"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

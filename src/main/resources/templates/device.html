@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+    <meta charset="UTF-8">
+    <title>Devices list</title>
+</head>
+<body>
+<div>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Model</th>
+            <th>Serial number</th>
+        </tr>
+        <tr th:each="device : ${device}">
+            <td th:text="${device.deviceId}"></td>
+            <td th:text="${device.model}"></td>
+            <td th:text="${device.serialNumber}"></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

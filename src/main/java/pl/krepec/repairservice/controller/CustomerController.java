@@ -1,6 +1,8 @@
 package pl.krepec.repairservice.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.krepec.repairservice.model.Customer;
 import pl.krepec.repairservice.repository.modelDAO.CustomerDAO;
@@ -8,7 +10,7 @@ import pl.krepec.repairservice.service.CustomerService;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/customer")
 public class CustomerController {
 
@@ -25,8 +27,9 @@ public class CustomerController {
     }
 
     @GetMapping("/customer")
-    public List<CustomerDAO> findAllCustomers() {
-        return customerService.findAllCustomers();
+    public String findAllCustomers(Model model) {
+        model.addAttribute("customer", customerService.findAllCustomers());
+        return "customer";
     }
 
     @GetMapping("/id/{id}")

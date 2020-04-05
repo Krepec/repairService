@@ -4,12 +4,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pl.krepec.repairservice.Status;
-import pl.krepec.repairservice.model.Customer;
-import pl.krepec.repairservice.model.Device;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.List;
 
 @Setter
 @Getter
