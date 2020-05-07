@@ -1,4 +1,4 @@
-package pl.krepec.repairservice.repository.modelDAO;
+package pl.krepec.repairservice.DAO.model;
 
 import lombok.*;
 
@@ -11,30 +11,30 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "customer")
-public class CustomerDAO {
+public class Customer {
 
 
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
         @NotNull
         @Column (name = "customer_Id")
-        private Long customerId;
+        public Long customerId;
 
         @NotNull
         @Column (name = "name")
-        private String name;
+        public String name;
 
         @Column (name = "surname")
-        private String surname;
+        public String surname;
 
         @NotNull
         @Column(name = "phoneNumber")
-        private String phoneNumber;
+        public String phoneNumber;
 
         @OneToMany(mappedBy = "customer")
-        private List<RepairDAO> repair;
+        private List<Repair> repair;
 
-        public CustomerDAO(Long customerId, String name, String surname, String phoneNumber) {
+        public Customer(Long customerId, String name, String surname, String phoneNumber) {
 
 
                 this.customerId = 0L;

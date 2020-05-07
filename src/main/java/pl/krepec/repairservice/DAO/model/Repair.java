@@ -1,9 +1,9 @@
-package pl.krepec.repairservice.repository.modelDAO;
+package pl.krepec.repairservice.DAO.model;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import pl.krepec.repairservice.Status;
+import pl.krepec.repairservice.common.Status;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -13,7 +13,7 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 @Entity
 @Table(name = "repair")
-public class RepairDAO {
+public class Repair {
 
 
     @Id
@@ -44,13 +44,13 @@ public class RepairDAO {
 
     @ManyToOne
     @JoinColumn(name = "device_id", insertable = false, updatable = false)
-    private DeviceDAO device;
+    private Device device;
 
     @ManyToOne
     @JoinColumn(name = "customer_id", insertable = false, updatable = false)
-    private CustomerDAO customer;
+    private Customer customer;
 
-    public RepairDAO(Long repairId, Long customerId, Long deviceId, Status status, String issue, String description) {
+    public Repair(Long repairId, Long customerId, Long deviceId, Status status, String issue, String description) {
 
         this.repairId = 0L;
         this.customerId = customerId;

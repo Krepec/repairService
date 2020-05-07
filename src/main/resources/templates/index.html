@@ -1,11 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
     <title>Title</title>
+
+    <link rel= "stylesheet"  type="text/css" href="/service.css" />
 </head>
 <body>
-<form>
+<div class="input">
+<div>
+
     <table>
         <p>Dane klienta</p>
         <tr>
@@ -21,13 +26,14 @@
             <td><input type="text"></td>
         </tr>
         <tr>
+            <td><input id="find" type="submit" value="Wyszukaj"></td>
             <td><input type="submit" value="Dodaj klienta"></td>
         </tr>
     </table>
-</form>
 
-
-<form th:action="@{/device/device}">
+</div>
+<div>    
+<form th:action="@{/deviceDTO/deviceDTO}">
     <table>
         <p>Urządzenie</p>
         <tr>
@@ -43,6 +49,8 @@
         </tr>
     </table>
 </form>
+</div>
+<div>
 <form>
     <table>
         <p>Zgłoszenie</p>
@@ -55,9 +63,36 @@
             <td><input type="text"></td>
         </tr>
         <tr>
-            <td><input type="submit" value="Przyjmij zgłoszenie"></td>
+            <td><input id="sendClaim" type="submit" value="Przyjmij zgłoszenie"></td>
         </tr>
     </table>
 </form>
+    
+    
+    
+</div>
+</div>
+<div class="claim-data">
+<div>
+    <h1>Dane klienta </h1>
+    <p>Numer klienta: <span id="customerId"></span></p>
+    <p>Imie: <span id="name"></span></p>
+    <p>Nazwisko:<span id="surname"></span></p>
+    <p>Numer telefonu: <span id="phoneNumber"></span></p>
+
+    <h1>Dane sprzętu </h1>
+    <p>Numer urządzenia: <span id="deviceId"></span></p>
+    <p>Model: <span id="model"></span></p>
+    <p>Numer seryjny: <span id="serialNumber"></span></p>
+
+    <h1>Opis zgłoszenia</h1>
+    <p>Opis usterki: <span id="issue"></span></p>
+    <p>Dodatkowe informacje: <span id="description"></span></p>
+    </div>
+    </div>
+
+
+<script src="app.js"></script>
+
 </body>
 </html>

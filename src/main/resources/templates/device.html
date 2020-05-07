@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.thymeleaf.org ">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Devices list</title>
 </head>
 <body>
-<div>
+<div class="input">
     <table>
         <tr>
             <th>Id</th>
             <th>Model</th>
             <th>Serial number</th>
         </tr>
-        <tr th:each="device : ${device}">
-            <td th:text="${device.deviceId}"></td>
-            <td th:text="${device.model}"></td>
-            <td th:text="${device.serialNumber}"></td>
+        <tr th:each="deviceDTO : ${deviceDTO}">
+            <td th:text="${deviceDTO.deviceId}"></td>
+            <td th:text="${deviceDTO.model}"></td>
+            <td th:text="${deviceDTO.serialNumber}"></td>
         </tr>
     </table>
-</div>
+
 </body>
 </html>

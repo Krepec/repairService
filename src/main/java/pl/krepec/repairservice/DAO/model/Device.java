@@ -1,4 +1,4 @@
-package pl.krepec.repairservice.repository.modelDAO;
+package pl.krepec.repairservice.DAO.model;
 
 
 import lombok.Getter;
@@ -14,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "device")
-public class DeviceDAO {
+public class Device {
 
 
     @Id
@@ -32,9 +32,9 @@ public class DeviceDAO {
     public String serialNumber;
 
     @OneToMany(mappedBy = "customer")
-    private List<RepairDAO> repair;
+    private List<Repair> repair;
 
-    public DeviceDAO(Long deviceId, String model, String serialNumber) {
+    public Device(Long deviceId, String model, String serialNumber) {
 
         this.deviceId = 0L;
         this.model = model;

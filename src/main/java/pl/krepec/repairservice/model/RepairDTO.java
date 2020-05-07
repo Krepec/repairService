@@ -1,16 +1,15 @@
 package pl.krepec.repairservice.model;
 
 import lombok.*;
-import pl.krepec.repairservice.Status;
+import pl.krepec.repairservice.common.Status;
 
 @Setter
 @Getter
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode
-public class Repair {
+public class RepairDTO {
 
-    private Long COUNTER_DEVICE_OBJECTS = 0L;
 
     public Long repairId;
     public Long customerId;
@@ -19,9 +18,8 @@ public class Repair {
     public String issue;
     public String description;
 
-    public Repair(Long repairId, Long customerId, Long deviceId, Status status, String issue, String description) {
+    public RepairDTO(Long repairId, Long customerId, Long deviceId, Status status, String issue, String description) {
 
-        COUNTER_DEVICE_OBJECTS++;
 
         this.repairId = repairId;
         this.customerId = customerId;

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Customer list</title>
@@ -13,12 +14,13 @@
             <th>Surname</th>
             <th>Phone Number</th>
         </tr>
-        <tr th:each="customer : ${customer}">
-            <td th:text="${customer.customerId}"></td>
-            <td th:text="${customer.name}"></td>
-            <td th:text="${customer.surname}"></td>
-            <td th:text="${customer.phoneNumber}"></td>
-
+        <tr th:each="customerDTO : ${customerDTO}">
+            <td th:text="${customerDTO.customerId}"></td>
+            <td th:text="${customerDTO.name}"></td>
+            <td th:text="${customerDTO.surname}"></td>
+            <td th:text="${customerDTO.phoneNumber}"></td>
+            <td>
+            </td>
         </tr>
     </table>
 </div>

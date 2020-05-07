@@ -1,4 +1,4 @@
-package pl.krepec.repairservice;
+package pl.krepec.repairservice.common;
 
 public enum Status {
 
