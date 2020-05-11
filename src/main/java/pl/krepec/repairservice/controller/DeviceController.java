@@ -11,7 +11,7 @@ import java.util.List;
 @RequestMapping("/device")
 public class DeviceController {
 
-    private DeviceServiceImpl deviceServiceImpl;
+    private final DeviceServiceImpl deviceServiceImpl;
 
     @Autowired
     private DeviceController (DeviceServiceImpl deviceServiceImpl){

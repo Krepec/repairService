@@ -2,11 +2,8 @@ package pl.krepec.repairservice.model;
 
 import lombok.*;
 
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
-@ToString
-@EqualsAndHashCode
 public class CustomerDTO {
 
 

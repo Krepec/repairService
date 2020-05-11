@@ -1,16 +1,14 @@
 package pl.krepec.repairservice.DAO.model;
 
 
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @Entity
 @Table(name = "device")
@@ -18,7 +16,7 @@ public class Device {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @NotNull
     @Column(name = "device_id")
     public Long deviceId;

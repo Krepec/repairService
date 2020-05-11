@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 public class DeviceServiceImpl implements DeviceService {
 
 
-    private DeviceRepository deviceRepository;
+    private final DeviceRepository deviceRepository;
 
     @Autowired
     private DeviceServiceImpl(DeviceRepository deviceRepository) {
@@ -27,13 +27,13 @@ public class DeviceServiceImpl implements DeviceService {
 
 
     public DeviceDTO findOne(Long deviceId) {
-        Device mapedDeviceDAD = deviceRepository.findOne(deviceId);
+        final Device mapedDeviceDAD = deviceRepository.findOne(deviceId);
         return mapDevice(mapedDeviceDAD);
 
     }
 
     public List<DeviceDTO> findAll() {
-        List<Device> deviceList = deviceRepository.findAll();
+        final List<Device> deviceList = deviceRepository.findAll();
         return deviceList
                 .stream()
                 .map(this::mapDevice)
@@ -41,7 +41,7 @@ public class DeviceServiceImpl implements DeviceService {
     }
 
     public DeviceDTO findByModel(String model) {
-        Device device = deviceRepository.findByModel(model);
+        final Device device = deviceRepository.findByModel(model);
         return mapDevice(device);
     }
 

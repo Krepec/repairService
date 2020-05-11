@@ -1,15 +1,13 @@
 package pl.krepec.repairservice.DAO.model;
 
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import pl.krepec.repairservice.common.Status;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-@Setter
-@Getter
+@Data
 @NoArgsConstructor
 @Entity
 @Table(name = "repair")
@@ -17,7 +15,7 @@ public class Repair {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @NotNull
     @Column(name = "repair_id")
     public Long repairId;
@@ -55,7 +53,7 @@ public class Repair {
         this.repairId = 0L;
         this.customerId = customerId;
         this.deviceId = deviceId;
-        this.status = status.INPROGRES;
+        this.status = Status.INPROGRES;
         this.issue = issue;
         this.description = description;
     }

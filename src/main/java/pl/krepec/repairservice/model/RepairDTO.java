@@ -3,11 +3,8 @@ package pl.krepec.repairservice.model;
 import lombok.*;
 import pl.krepec.repairservice.common.Status;
 
-@Setter
-@Getter
+@Data
 @NoArgsConstructor
-@ToString
-@EqualsAndHashCode
 public class RepairDTO {
 
 

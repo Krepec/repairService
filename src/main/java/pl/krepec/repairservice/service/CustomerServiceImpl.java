@@ -14,7 +14,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 
 
-    private CustomerRepository customerRepository;
+    private final CustomerRepository customerRepository;
 
     @Autowired
     private CustomerServiceImpl(CustomerRepository customerRepository) {
@@ -37,19 +37,19 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public CustomerDTO findById(Long customerId) {
-        Customer customer = customerRepository.findOne(customerId);
+        final Customer customer = customerRepository.findOne(customerId);
         return mapCustomer(customer);
     }
 
     @Override
     public CustomerDTO findByPhoneNumber(String phoneNumber) {
-        Customer customer = customerRepository.findByPhoneNumber(phoneNumber);
+        final Customer customer = customerRepository.findByPhoneNumber(phoneNumber);
         return mapCustomer(customer);
     }
 
     @Override
     public String addCustomer(CustomerDTO customerDTO) {
-        Customer customer = customerRepository.save(new Customer(customerDTO.getCustomerId(), customerDTO.getName(), customerDTO.getSurname(), customerDTO.getPhoneNumber()));
+        final Customer customer = customerRepository.save(new Customer(customerDTO.getCustomerId(), customerDTO.getName(), customerDTO.getSurname(), customerDTO.getPhoneNumber()));
         return "User " + customer.getName() + " added";
     }
 

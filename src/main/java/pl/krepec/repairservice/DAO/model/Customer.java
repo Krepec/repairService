@@ -6,8 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @Entity
 @Table(name = "customer")
@@ -15,7 +14,7 @@ public class Customer {
 
 
         @Id
-        @GeneratedValue(strategy = GenerationType.AUTO)
+        @GeneratedValue(strategy = GenerationType.SEQUENCE)
         @NotNull
         @Column (name = "customer_Id")
         public Long customerId;

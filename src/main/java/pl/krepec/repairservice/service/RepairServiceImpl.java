@@ -1,25 +1,30 @@
 package pl.krepec.repairservice.service;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.krepec.repairservice.model.RepairDTO;
-import pl.krepec.repairservice.DAO.repository.RepairRepository;
 import pl.krepec.repairservice.DAO.model.Repair;
+import pl.krepec.repairservice.DAO.repository.RepairRepository;
+import pl.krepec.repairservice.model.RepairDTO;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-@RequiredArgsConstructor
 @Service
 public class RepairServiceImpl implements RepairService {
 
-    private RepairRepository repairRepository;
+    private final RepairRepository repairRepository;
 
     @Autowired
-    private RepairServiceImpl(RepairRepository repairRepository, DeviceServiceImpl deviceService) {
+    private RepairServiceImpl(RepairRepository repairRepository) {
         this.repairRepository = repairRepository;
     }
+
+    public RepairDTO findById2(Long repairId) {
+        final Repair repair = repairRepository.findOne(repairId);
+        return  mapRepair(repair);
+    }
+
+
 
     private RepairDTO mapRepair(Repair repair) {
         return new RepairDTO(repair.getRepairId(), repair.getCustomerId(), repair.getDeviceId(),
@@ -28,7 +33,7 @@ public class RepairServiceImpl implements RepairService {
 
 
     public List<RepairDTO> findAll() {
-    List<Repair> repairList = repairRepository.findAll();
+        final List<Repair> repairList = repairRepository.findAll();
         return repairList
                 .stream()
                 .map(this::mapRepair)
@@ -36,11 +41,12 @@ public class RepairServiceImpl implements RepairService {
     }
 
     public RepairDTO findById(Long repairId) {
-        return mapRepair(repairRepository.findOne(repairId));
+        final Repair repair = repairRepository.findOne(repairId);
+        return  mapRepair(repair);
     }
 
     public String add(RepairDTO repairDTO) {
-        Repair newReapirDAO = repairRepository.save(new Repair(repairDTO.getRepairId(), repairDTO.getCustomerId(), repairDTO.getDeviceId(),
+       final Repair newReapirDAO = repairRepository.save(new Repair(repairDTO.getRepairId(), repairDTO.getCustomerId(), repairDTO.getDeviceId(),
                 repairDTO.getStatus(), repairDTO.getIssue(), repairDTO.getDescription()));
         return "Naprawa dodana, numer naprawy: " + newReapirDAO.getRepairId();
 
