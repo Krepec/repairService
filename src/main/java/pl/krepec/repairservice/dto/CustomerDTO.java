@@ -1,4 +1,4 @@
-package pl.krepec.repairservice.model;
+package pl.krepec.repairservice.dto;
 
 import lombok.*;
 

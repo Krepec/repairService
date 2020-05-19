@@ -2,7 +2,7 @@ package pl.krepec.repairservice.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import pl.krepec.repairservice.model.CustomerDTO;
+import pl.krepec.repairservice.dto.CustomerDTO;
 import pl.krepec.repairservice.service.CustomerService;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package pl.krepec.repairservice.DAO.model;
+package pl.krepec.repairservice.dao.domain;
 
 
 import lombok.Data;
@@ -16,7 +16,7 @@ public class Device {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @NotNull
     @Column(name = "device_id")
     public Long deviceId;

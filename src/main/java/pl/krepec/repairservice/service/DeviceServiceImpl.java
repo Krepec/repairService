@@ -2,9 +2,9 @@ package pl.krepec.repairservice.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.krepec.repairservice.DAO.model.Device;
-import pl.krepec.repairservice.DAO.repository.DeviceRepository;
-import pl.krepec.repairservice.model.DeviceDTO;
+import pl.krepec.repairservice.dao.domain.Device;
+import pl.krepec.repairservice.dao.repository.DeviceRepository;
+import pl.krepec.repairservice.dto.DeviceDTO;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,8 +27,9 @@ public class DeviceServiceImpl implements DeviceService {
 
 
     public DeviceDTO findOne(Long deviceId) {
-        final Device mapedDeviceDAD = deviceRepository.findOne(deviceId);
-        return mapDevice(mapedDeviceDAD);
+        final Device Device = deviceRepository.findOne(deviceId);
+        System.out.println(Device);
+        return mapDevice(Device);
 
     }
 

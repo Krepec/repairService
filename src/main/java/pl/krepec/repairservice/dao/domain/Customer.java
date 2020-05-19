@@ -1,4 +1,4 @@
-package pl.krepec.repairservice.DAO.model;
+package pl.krepec.repairservice.dao.domain;
 
 import lombok.*;
 
@@ -14,17 +14,17 @@ public class Customer {
 
 
         @Id
-        @GeneratedValue(strategy = GenerationType.SEQUENCE)
+        @GeneratedValue(strategy = GenerationType.AUTO)
         @NotNull
         @Column (name = "customer_Id")
         public Long customerId;
 
         @NotNull
         @Column (name = "name")
-        public String name;
+        public String firstName;
 
-        @Column (name = "surname")
-        public String surname;
+        @Column (name = "lastName")
+        public String lastName;
 
         @NotNull
         @Column(name = "phoneNumber")
@@ -33,12 +33,12 @@ public class Customer {
         @OneToMany(mappedBy = "customer")
         private List<Repair> repair;
 
-        public Customer(Long customerId, String name, String surname, String phoneNumber) {
+        public Customer(Long customerId, String firstName, String lastName, String phoneNumber) {
 
 
                 this.customerId = 0L;
-                this.name = name;
-                this.surname = surname;
+                this.firstName = firstName;
+                this.lastName = lastName;
                 this.phoneNumber = phoneNumber;
         }
 

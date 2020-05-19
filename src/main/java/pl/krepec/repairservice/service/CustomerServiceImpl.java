@@ -2,9 +2,9 @@ package pl.krepec.repairservice.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.krepec.repairservice.model.CustomerDTO;
-import pl.krepec.repairservice.DAO.repository.CustomerRepository;
-import pl.krepec.repairservice.DAO.model.Customer;
+import pl.krepec.repairservice.dto.CustomerDTO;
+import pl.krepec.repairservice.dao.repository.CustomerRepository;
+import pl.krepec.repairservice.dao.domain.Customer;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,7 +22,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     private CustomerDTO mapCustomer(Customer customer) {
-        return new CustomerDTO(customer.customerId, customer.name, customer.surname, customer.phoneNumber);
+        return new CustomerDTO(customer.customerId, customer.firstName, customer.lastName, customer.phoneNumber);
     }
 
 
@@ -38,8 +38,10 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public CustomerDTO findById(Long customerId) {
         final Customer customer = customerRepository.findOne(customerId);
+        System.out.println(customer);
         return mapCustomer(customer);
     }
+
 
     @Override
     public CustomerDTO findByPhoneNumber(String phoneNumber) {
@@ -50,7 +52,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public String addCustomer(CustomerDTO customerDTO) {
         final Customer customer = customerRepository.save(new Customer(customerDTO.getCustomerId(), customerDTO.getName(), customerDTO.getSurname(), customerDTO.getPhoneNumber()));
-        return "User " + customer.getName() + " added";
+        return "User " + customer.getFirstName() + " added";
     }
 
 }

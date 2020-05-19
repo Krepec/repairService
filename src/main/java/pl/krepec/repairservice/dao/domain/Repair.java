@@ -1,4 +1,4 @@
-package pl.krepec.repairservice.DAO.model;
+package pl.krepec.repairservice.dao.domain;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,7 +15,7 @@ public class Repair {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @NotNull
     @Column(name = "repair_id")
     public Long repairId;
@@ -27,6 +27,10 @@ public class Repair {
     @NotNull
     @Column(name = "device_id")
     public Long deviceId;
+
+    @NotNull
+    @Column
+    public String repairNumber;
 
     @NotNull
     @Column(name = "status")
@@ -48,11 +52,12 @@ public class Repair {
     @JoinColumn(name = "customer_id", insertable = false, updatable = false)
     private Customer customer;
 
-    public Repair(Long repairId, Long customerId, Long deviceId, Status status, String issue, String description) {
+    public Repair(Long repairId, Long customerId, Long deviceId, String repairNumber, Status status, String issue, String description) {
 
         this.repairId = 0L;
         this.customerId = customerId;
         this.deviceId = deviceId;
+        this.repairNumber = repairNumber;
         this.status = Status.INPROGRES;
         this.issue = issue;
         this.description = description;

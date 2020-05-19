@@ -1,6 +1,6 @@
 package pl.krepec.repairservice.service;
 
-import pl.krepec.repairservice.model.RepairDTO;
+import pl.krepec.repairservice.dto.RepairDTO;
 
 import java.util.List;
 
