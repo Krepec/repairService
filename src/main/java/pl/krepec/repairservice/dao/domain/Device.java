@@ -29,7 +29,7 @@ public class Device {
     @Column(name = "serial_number")
     public String serialNumber;
 
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "device")
     private List<Repair> repair;
 
     public Device(Long deviceId, String model, String serialNumber) {

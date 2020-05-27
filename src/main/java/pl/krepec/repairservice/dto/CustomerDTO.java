@@ -8,16 +8,16 @@ public class CustomerDTO {
 
 
     private Long customerId;
-    private String name;
-    private String surname;
+    private String firstName;
+    private String lastName;
     private String phoneNumber;
 
-    public CustomerDTO(Long customerId, String name, String surname, String phoneNumber) {
+    public CustomerDTO(Long customerId, String firstName, String lastName, String phoneNumber) {
 
 
         this.customerId = customerId;
-        this.name = name;
-        this.surname = surname;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.phoneNumber = phoneNumber;
     }
 

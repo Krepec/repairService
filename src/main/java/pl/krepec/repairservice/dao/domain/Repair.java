@@ -1,14 +1,15 @@
 package pl.krepec.repairservice.dao.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import pl.krepec.repairservice.common.Status;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.time.OffsetDateTime;
 
 @Data
-@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "repair")
 public class Repair {
@@ -21,15 +22,7 @@ public class Repair {
     public Long repairId;
 
     @NotNull
-    @Column(name = "customer_id")
-    public Long customerId;
-
-    @NotNull
-    @Column(name = "device_id")
-    public Long deviceId;
-
-    @NotNull
-    @Column
+    @Column(name = "repair_number")
     public String repairNumber;
 
     @NotNull
@@ -44,23 +37,29 @@ public class Repair {
     @Column(name = "description")
     public String description;
 
-    @ManyToOne
-    @JoinColumn(name = "device_id", insertable = false, updatable = false)
-    private Device device;
+    @NotNull
+    @Column(name = "start_Date")
+    public OffsetDateTime startDate;
+
+    @NotNull
+    @Column(name = "endt_Date")
+    public OffsetDateTime endDate;
+
+    @NotNull
+    @Column(name = "repair_result")
+    public String repairResult;
+
 
     @ManyToOne
     @JoinColumn(name = "customer_id", insertable = false, updatable = false)
     private Customer customer;
 
-    public Repair(Long repairId, Long customerId, Long deviceId, String repairNumber, Status status, String issue, String description) {
+    @ManyToOne
+    @JoinColumn(name = "device_id", insertable = false, updatable = false)
+    private Device device;
 
-        this.repairId = 0L;
-        this.customerId = customerId;
-        this.deviceId = deviceId;
-        this.repairNumber = repairNumber;
-        this.status = Status.INPROGRES;
-        this.issue = issue;
-        this.description = description;
-    }
+
+
+
 }
 
