@@ -34,7 +34,7 @@ public class DeviceController {
     }
 
     @PostMapping(value = "/deviceDTO", consumes = "application/json")
-    public String addDevice(@RequestBody DeviceDTO deviceDTO){
+    public DeviceDTO add(@RequestBody DeviceDTO deviceDTO){
        return deviceServiceImpl.add(deviceDTO);
     }
 }

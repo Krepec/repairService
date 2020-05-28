@@ -2,14 +2,12 @@ package pl.krepec.repairservice.dao.domain;
 
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Data
-@NoArgsConstructor
 @Entity
 @Table(name = "device")
 public class Device {
@@ -18,8 +16,8 @@ public class Device {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @NotNull
-    @Column(name = "device_id")
-    public Long deviceId;
+    @Column(name = "id")
+    public Long id;
 
     @NotNull
     @Column(name = "model")
@@ -32,14 +30,11 @@ public class Device {
     @OneToMany(mappedBy = "device")
     private List<Repair> repair;
 
-    public Device(Long deviceId, String model, String serialNumber) {
 
-        this.deviceId = 0L;
+    public Device(Long id, String model, String serialNumber) {
+        this.id = id;
         this.model = model;
         this.serialNumber = serialNumber;
-
     }
-
-
 }
 

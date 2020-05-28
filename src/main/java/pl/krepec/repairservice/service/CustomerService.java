@@ -9,5 +9,5 @@ public interface CustomerService {
     List<CustomerDTO> findAll();
     CustomerDTO findById(Long customerId);
     CustomerDTO findByPhoneNumber(String phoneNumber);
-    String addCustomer(CustomerDTO customerDTO);
+    CustomerDTO add(CustomerDTO customerDTO);
 }

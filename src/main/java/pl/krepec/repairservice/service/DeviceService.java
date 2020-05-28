@@ -10,6 +10,6 @@ public interface DeviceService {
      DeviceDTO findOne(Long deviceId);
      List<DeviceDTO> findAll();
      DeviceDTO findByModel(String model);
-     String add(DeviceDTO deviceDTO);
+     DeviceDTO add(DeviceDTO deviceDTO);
 
 }

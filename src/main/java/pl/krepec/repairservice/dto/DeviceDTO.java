@@ -3,22 +3,15 @@ package pl.krepec.repairservice.dto;
 import lombok.*;
 
 @Data
-@NoArgsConstructor
-public class DeviceDTO {
+@AllArgsConstructor
+public class DeviceDTO{
 
 
-    public Long deviceId;
+    public Long id;
     public String model;
     public String serialNumber;
 
 
-    public DeviceDTO(Long deviceId, String model, String serialNumber) {
-
-
-        this.deviceId = deviceId;
-        this.model = model;
-        this.serialNumber = serialNumber;
-    }
 
 }
 

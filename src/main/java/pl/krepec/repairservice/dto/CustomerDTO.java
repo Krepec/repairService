@@ -3,22 +3,14 @@ package pl.krepec.repairservice.dto;
 import lombok.*;
 
 @Data
-@NoArgsConstructor
+@AllArgsConstructor
 public class CustomerDTO {
 
 
-    private Long customerId;
+    private Long id;
     private String firstName;
     private String lastName;
     private String phoneNumber;
 
-    public CustomerDTO(Long customerId, String firstName, String lastName, String phoneNumber) {
-
-
-        this.customerId = customerId;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.phoneNumber = phoneNumber;
-    }
 
 }

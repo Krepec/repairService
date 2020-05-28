@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Data
-@NoArgsConstructor
+@RequiredArgsConstructor
 @Entity
 @Table(name = "customer")
 public class Customer {
@@ -16,33 +16,27 @@ public class Customer {
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
         @NotNull
-        @Column (name = "customer_Id")
-        public Long customerId;
+        @Column (name = "id")
+        public Long id;
 
         @NotNull
-        @Column (name = "name")
+        @Column (name = "first_name")
         public String firstName;
 
-        @Column (name = "lastName")
+        @Column (name = "last_Name")
         public String lastName;
 
         @NotNull
-        @Column(name = "phoneNumber")
+        @Column(name = "phone_Number")
         public String phoneNumber;
 
         @OneToMany(mappedBy = "customer")
-        private List<Repair> repair;
+        public List<Repair> repair;
 
-        public Customer(Long customerId, String firstName, String lastName, String phoneNumber) {
-
-
-                this.customerId = 0L;
+        public Customer(Long id, String firstName, String lastName, String phoneNumber) {
+                this.id = id;
                 this.firstName = firstName;
                 this.lastName = lastName;
                 this.phoneNumber = phoneNumber;
         }
-
-
-
-
 }

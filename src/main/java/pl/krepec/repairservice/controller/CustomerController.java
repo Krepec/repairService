@@ -35,7 +35,7 @@ public class CustomerController {
 
 
     @PostMapping(value = "/customerDTO" ,  consumes = "application/json" )
-    public String add(@RequestBody CustomerDTO customerDTO) {
-        return customerService.addCustomer(customerDTO);
+    public CustomerDTO add(@RequestBody CustomerDTO customerDTO) {
+        return customerService.add(customerDTO);
     }
 }

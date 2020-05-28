@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import pl.krepec.repairservice.dao.domain.Device;
 import pl.krepec.repairservice.dao.repository.DeviceRepository;
 import pl.krepec.repairservice.dto.DeviceDTO;
+import pl.krepec.repairservice.mapper.DeviceDTOMapper;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,22 +15,19 @@ public class DeviceServiceImpl implements DeviceService {
 
 
     private final DeviceRepository deviceRepository;
+    private final DeviceDTOMapper deviceDTOMapper;
 
     @Autowired
-    private DeviceServiceImpl(DeviceRepository deviceRepository) {
+    private DeviceServiceImpl(DeviceRepository deviceRepository, DeviceDTOMapper deviceDTOMapper) {
         this.deviceRepository = deviceRepository;
-    }
-
-    private DeviceDTO mapDevice(Device device) {
-        return new DeviceDTO(device.deviceId, device.model, device.serialNumber);
-
+        this.deviceDTOMapper = deviceDTOMapper;
     }
 
 
     public DeviceDTO findOne(Long deviceId) {
-        final Device Device = deviceRepository.findOne(deviceId);
-        System.out.println(Device);
-        return mapDevice(Device);
+        final Device device = deviceRepository.findOne(deviceId);
+        System.out.println(device);
+        return deviceDTOMapper.deviceDTOfromDevice(device);
 
     }
 
@@ -37,19 +35,19 @@ public class DeviceServiceImpl implements DeviceService {
         final List<Device> deviceList = deviceRepository.findAll();
         return deviceList
                 .stream()
-                .map(this::mapDevice)
+                .map(deviceDTOMapper::deviceDTOfromDevice)
                 .collect(Collectors.toList());
     }
 
     public DeviceDTO findByModel(String model) {
         final Device device = deviceRepository.findByModel(model);
-        return mapDevice(device);
+        return deviceDTOMapper.deviceDTOfromDevice(device);
     }
 
-    public String add(DeviceDTO deviceDTO) {
-        Device device = deviceRepository.save(new Device(deviceDTO.getDeviceId(),
+    public DeviceDTO add(DeviceDTO deviceDTO) {
+        Device device = deviceRepository.save(new Device(deviceDTO.getId(),
                 deviceDTO.getModel(), deviceDTO.getSerialNumber()));
-        return "DeviceDTO " + device.model + "added";
+        return deviceDTOMapper.deviceDTOfromDevice(device);
     }
 
 
